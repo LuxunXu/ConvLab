@@ -75,7 +75,7 @@ class SCLSTM(NLG):
         model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), self.args['model_path'])
         # print(model_path)
         assert os.path.isfile(model_path)
-        self.model.load_state_dict(torch.load(model_path))
+        self.model.load_state_dict(torch.load(model_path, map_location='cpu'))
         self.model.eval()
         if use_cuda:
             self.model.cuda()
